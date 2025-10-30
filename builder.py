@@ -3,11 +3,11 @@ from st_link_analysis import NodeStyle, EdgeStyle
 
 def build_grid(df,key):
     gb = GridOptionsBuilder.from_dataframe(df)
-    gb.configure_selection(selection_mode="single", use_checkbox=True)
-    gb.configure_pagination(enabled=True)
+    gb.configure_selection(selection_mode="single", use_checkbox=False)
+    gb.configure_pagination(enabled=True,paginationAutoPageSize=True)
 
     return AgGrid(df,                  
-                height=min(27+len(df)*35, 400),                
+                #height=min(27+len(df)*35, 400),                
                 gridOptions=gb.build(),
                 enable_enterprise_modules=False,              
                 fit_columns_on_grid_load=True,
@@ -47,10 +47,10 @@ def get_node_labels(nodes):
 node_category_colors = {'Protein':'#a3b5c7',\
                         'BioProcess':'#4d2f9e',\
                             'MolFunc':'#7fe63a',\
-                            'CellComp':'#f1c2d4',\
+                            'CellComp':"#f2d9e3",\
                             'Pathway':'#14ad9b',\
                             'Complex':'#ab3fd5',\
-                            'Tissue':'#ef4b2c',\
+                            'Tissue':"#ef4c2c53",\
                             'Domain':'#1e6723',\
                             'HomologousSuperFam':'#5638e7',\
                             'KinaseFam':'#94cd85',\
@@ -66,7 +66,7 @@ def get_graph_style(elements):
 def build_inference_grid(data):
     data.columns = ['Kinase Gene','Kinase UniProt ID','Sites predicted (count)', 'p-value', 'Adjusted p-value']
     gb = GridOptionsBuilder.from_dataframe(data)
-    gb.configure_pagination(enabled=True, paginationAutoPageSize=False, paginationPageSize=10)
+    gb.configure_pagination(enabled=True,paginationAutoPageSize=True)
 
     AgGrid(
             data, 

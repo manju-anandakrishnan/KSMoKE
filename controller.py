@@ -19,12 +19,13 @@ def get_predictions(substrate,motif,prob):
     pred_df.drop_duplicates(inplace=True)
     pred_df.sort_values(by='Prediction Probability',ascending=False,inplace=True)
     pred_df = pred_df[['Kinase Gene','Kinase UniProt ID','Prediction Probability']]
+    print(pred_df.shape)
     return pred_df
 
-@st.cache_data
-def get_substrate_genes():
+
+def get_substrate_genes(cut_off_prob):
     substrate_genes = ['']
-    substrate_genes.extend(service.get_substrate_genes())
+    substrate_genes.extend(service.get_substrate_genes(cut_off_prob))
     substrate_genes.sort()
     return substrate_genes
 
@@ -40,19 +41,19 @@ class Controller:
         self.ks_service = KinaseSubstrateService()
         self.ki_service = KinaseInferenceService()
 
-    def get_proteins(self,gene):
-        protein_phosphosites = service.get_protein_phosphosites()
+    def get_proteins(self,gene,cut_off_prob):
+        protein_phosphosites = service.get_protein_phosphosites(cut_off_prob)
         protein_phosphosites = protein_phosphosites[gene]
         proteins = protein_phosphosites.keys()
         return proteins
 
-    def get_phosphosite(self,gene, protein):
-        phosphosites = service.get_protein_phosphosites()
+    def get_phosphosite(self,gene, protein, get_proteins):
+        phosphosites = service.get_protein_phosphosites(get_proteins)
         protein_phosphosites = phosphosites[gene][protein]
         site_motif_pairs = {site:m for site,m in protein_phosphosites}
         return site_motif_pairs
 
-    def get_predicted_kinases(self,substrate_protein,motif,prediction_prob_cutoff=0):
+    def get_predicted_kinases(self,substrate_protein,motif,prediction_prob_cutoff):
         return get_predictions(substrate_protein,motif,prediction_prob_cutoff)
     
     def get_kinase_substrate_links(self,kinase,substrate,intermediate_max):
