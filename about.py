@@ -19,7 +19,6 @@ st.markdown("""
             graph embedding algorithms and the entities are embedded in latent vector space. By bilinear transformation, the vectors of the entities 
             (kinases, substrate(protein)s and motifs) are combined and a supervised neural network classifier is trained to predict phosphorylation 
             probability for a given kinase-phosphosite pair. KSMoFinder offers a broad kinase coverage including 430 human kinases across 9 kinase groups, Atypical, AGC, CAMK, CK1, CMGC, STE, TKL, TK and Other.</p>
-            <p>The preprint of KSMoFinder is available on <a href="https://www.biorxiv.org/content/10.1101/2025.10.21.683733v1">bioRxiv</a>.</p>
             <p>The figure below presents the overview of KSMoFinder's methodology.</p>
             """,unsafe_allow_html=True)
             
@@ -33,3 +32,23 @@ st.markdown("""
             """,unsafe_allow_html=True)
 
 st.image("images/KSMo-KG-data.png")
+
+st.markdown("""
+            <p>For additional details about KSMoFinder, refer to our <a href="https://doi.org/10.1093/bioadv/vbaf289">article</a>.</p>
+            """,unsafe_allow_html=True)
+
+
+st.markdown(
+    f"""
+    <hr style="margin-top: 50px;">
+    <div style="text-align: left; color: gray; font-size: 0.9em;">
+        GitHub repository: https://github.com/manju-anandakrishnan/KSMoFinder<br/>
+        Data repository: https://doi.org/10.5281/zenodo.15730847<br/><br/>
+        <b>If you use KSMoFinder's predictions, please cite:</b><br/>
+        Manju Anandakrishnan, Karen E Ross, Chuming Chen, K Vijay-Shanker, Cathy H Wu, <br/>
+        KSMoFinder—Knowledge graph embedding of proteins and motifs for predicting kinases of human phosphosites, <br/>
+        Bioinformatics Advances, 2025;, vbaf289, https://doi.org/10.1093/bioadv/vbaf289
+    </div>
+    """,
+    unsafe_allow_html=True
+)
