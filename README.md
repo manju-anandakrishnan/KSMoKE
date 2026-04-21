@@ -2,9 +2,10 @@
 
 The application can be accessed at https://research.bioinformatics.udel.edu/KSMoFinder/ <br>
 
-**1. Conduct kinase enrichment analysis and explore connections between enriched kinase(s) and substrate proteins** <br/>
+**1. Conduct kinase enrichment analysis and explore connections between enriched kinase(s) and substrate proteins** <br/><br/>
 <img src=images/readme_figure2.png width="800">
 
+<br/> 
 **2. Retrieve predicted kinases of substrate using KSMoFinder and explore biological connections between kinase and substrate protein** <br/>
 <img src=images/readme_figure1.png width="800">
 
