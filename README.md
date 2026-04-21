@@ -14,13 +14,13 @@ The application can be accessed at https://research.bioinformatics.udel.edu/KSMo
 # Application set up
 **Create a conda environment with the required libraries** <br/>
 ```
-conda create env --name ksmoke --file requirements.txt <br/>
+conda create env --name ksmoke --file requirements.txt
 ```
 
 
 **Activate the conda environment** <br/>
 ```
-conda activate ksmoke <br/>
+conda activate ksmoke
 ```
 
 **Update .env file with db configurations** <br/>
