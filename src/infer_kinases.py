@@ -70,18 +70,12 @@ with st.container(border=True):
 with st.container(border=True):
     st.markdown(f"""<b><p style="color:#0000FF;">Choose (or) upload a background kinase-substrate library:</p></b>""",unsafe_allow_html=True)
     bg_ks_library_key = st.radio("Kinase-substrate library", 
-                            ["**Baseline (BL)**", 
-                            "**BL-KSMo**", 
-                            "**BL-KA**", 
+                            ["**BL-KSMo**", 
                             "**BL-KSMoKA**",
-                            "**BL-nKIN**",
                             "**Custom library**"], 
                             captions=[
-                                "Curated \n\n kinase-substrate \n\n library",
                                 "BL + \n\n KSMoFinder's \n\n predictions",
-                                "BL + \n\n Kinome Atlas \n\n &nbsp;",
                                 "BL + \n\n KSMoFinder's predictions (ST) + \n\n Kinome Atlas (Y)",
-                                "BL + \n\n NetworKIN predictions \n\n &nbsp;",
                                 "Upload a custom \n\n kinase-substrate library \n\n &nbsp;"], index=1, horizontal=True, label_visibility='collapsed')
 
     custom_bg_df = None

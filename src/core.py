@@ -13,25 +13,15 @@ class KinaseEnrichmentCore:
         ks_library_df = pd.read_feather('data/ks_libraries/BL-KSMo.feather')
         return ks_library_df
     
-    @st.cache_data
-    def get_ks_library_ka():
-        ks_library_df = pd.read_feather('data/ks_libraries/BL-KA.feather')
-        return ks_library_df
-
-    @st.cache_data
-    def get_ks_library_nkin():
-        ks_library_df = pd.read_feather('data/ks_libraries/BL-nKIN.feather')
-        return ks_library_df
+    '''
+    This method loads the background BL-stKSMoyKA kinase-substrate library to the cache
+    '''
 
     @st.cache_data
     def get_ks_library_stksmoyka():
         ks_library_df = pd.read_feather('data/ks_libraries/BL-stKSMoyKA.feather')
         return ks_library_df
     
-    @st.cache_data
-    def get_ks_library_bl():
-        ks_library_df = pd.read_feather('data/ks_libraries/BL.feather')
-        return ks_library_df
 
     def get_ks_library(ks_library_key, custom_bg_df = None):
         ks_library_df = None
