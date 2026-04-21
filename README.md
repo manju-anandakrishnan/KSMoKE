@@ -7,12 +7,12 @@ The application can be accessed at https://research.bioinformatics.udel.edu/KSMo
 conda create env --name ksmoke --file requirements.txt <br/>
 
 
-**Activate the conda environment**
-conda activate ksmoke
+**Activate the conda environment** <br/>
+conda activate ksmoke <br/>
 
-**Update .env file with db configurations**
+**Update .env file with db configurations** <br/>
 
-**Launch the application**
+**Launch the application** <br/>
 streamlit run home.py
 
 
