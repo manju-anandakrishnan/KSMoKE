@@ -1,4 +1,5 @@
-# This repository maintains the code base for the web interface described in the manuscript, KSMoKE.
+# KSMoKE
+This repository maintains the code base for the web interface described in the manuscript, KSMoKE.
 
 The application can be accessed at https://research.bioinformatics.udel.edu/KSMoFinder/ <br>
 
