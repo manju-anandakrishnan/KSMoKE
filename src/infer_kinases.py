@@ -69,12 +69,13 @@ with st.container(border=True):
 # Background kinase-substrate library file upload
 with st.container(border=True):
     st.markdown(f"""<b><p style="color:#0000FF;">Choose (or) upload a background kinase-substrate library:</p></b>""",unsafe_allow_html=True)
+    st.markdown(f"""Baseline<b>(BL)</b> refers to curated kinase-substrate relationships from iPTMnet and PhosphositePlus""",unsafe_allow_html=True)
     bg_ks_library_key = st.radio("Kinase-substrate library", 
                             ["**BL-KSMo**", 
                             "**BL-KSMoKA**",
                             "**Custom library**"], 
                             captions=[
-                                "BL + \n\n KSMoFinder's \n\n predictions",
+                                "BL + \n\n KSMoFinder's predictions \n\n &nbsp;",
                                 "BL + \n\n KSMoFinder's predictions (ST) + \n\n Kinome Atlas (Y)",
                                 "Upload a custom \n\n kinase-substrate library \n\n &nbsp;"], index=1, horizontal=True, label_visibility='collapsed')
 

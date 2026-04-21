@@ -16,7 +16,7 @@ cut_off_col1, cut_off_col2, cut_off_col3 = st.columns([0.5,0.3,1])
 with cut_off_col1:
     st.markdown("<div style='padding-top:35px;text-align:right;'>Kinases with prediction probability <b>>=</b></div>",unsafe_allow_html=True)
 with cut_off_col2:
-    cut_off_prob_thresh = st.number_input('',value=0.8,min_value=0.0,max_value=1.0)
+    cut_off_prob_thresh = st.number_input('Probability cut off threshold',value=0.8,min_value=0.0,max_value=1.0,label_visibility="hidden")
 with cut_off_col3:
     st.markdown("<div style='padding-top: 35px;font-style: italic;'>To view kinases with lower prediction probability, update this value.",unsafe_allow_html=True)
 
