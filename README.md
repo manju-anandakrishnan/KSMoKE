@@ -15,6 +15,8 @@ conda activate ksmoke <br/>
 **Launch the application** <br/>
 streamlit run home.py
 
+**Conduct kinase enrichment analysis and explore connections between enriched kinase(s) and substrate proteins** <br/>
+<img src=images/readme_figure2.png width="300">
 
 
 
