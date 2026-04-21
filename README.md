@@ -2,9 +2,13 @@
 
 The application can be accessed at https://research.bioinformatics.udel.edu/KSMoFinder/ <br>
 
-**Conduct kinase enrichment analysis and explore connections between enriched kinase(s) and substrate proteins** <br/>
+**1. Conduct kinase enrichment analysis and explore connections between enriched kinase(s) and substrate proteins** <br/>
 <img src=images/readme_figure2.png width="800">
 
+**2. Retrieve predicted kinases of substrate using KSMoFinder and explore biological connections between kinase and substrate protein** <br/>
+<img src=images/readme_figure1.png width="800">
+
+# Application set up
 **Create a conda environment with the required libraries** <br/>
 conda create env --name ksmoke --file requirements.txt <br/>
 
