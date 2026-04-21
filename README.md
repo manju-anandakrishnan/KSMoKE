@@ -1,5 +1,5 @@
 # KSMoKE
-This repository maintains the code base for the web interface described in the manuscript, KSMoKE.
+This repository maintains the code base for the web interface described in the manuscript, KSMoKE - Kinase enrichment analysis using motif specificities and cellular context of phosphorylated proteins.
 
 The application can be accessed at https://research.bioinformatics.udel.edu/KSMoFinder/ <br>
 
