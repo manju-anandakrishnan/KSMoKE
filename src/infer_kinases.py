@@ -1,13 +1,13 @@
 import streamlit as st
-from controller import Controller
-import validator
-from validator import CustomError
+from src.controller import Controller
+import src.validator as validator
+from src.validator import CustomError
 import pandas as pd
-import builder
+import src.builder as builder
 from datetime import datetime
 from st_link_analysis import st_link_analysis
 from st_link_analysis.component.layouts import LAYOUTS
-import util
+import src.util as util
 
 st.markdown('''<b>Infer differentially regulated kinases for a condition state using KSMoFinder's predictions</b><br/> 
                 Enriched kinases are determined using Fisher's exact test.<br/>

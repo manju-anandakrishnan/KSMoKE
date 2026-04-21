@@ -1,5 +1,5 @@
-import service
-from service import KinaseSubstrateService, KinaseInferenceService
+import src.service as service
+from src.service import KinaseSubstrateService, KinaseInferenceService
 import streamlit as st
 import pandas as pd
 import os

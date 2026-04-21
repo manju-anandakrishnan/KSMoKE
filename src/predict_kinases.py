@@ -1,7 +1,7 @@
 import streamlit as st
-import controller as controller_st
-from controller import Controller
-import builder
+import src.controller as controller_st
+from src.controller import Controller
+import src.builder as builder
 import time
 from dotenv import load_dotenv
 from st_link_analysis import st_link_analysis

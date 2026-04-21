@@ -1,6 +1,6 @@
 from st_aggrid import GridOptionsBuilder, AgGrid, JsCode
 from st_link_analysis import NodeStyle, EdgeStyle
-import util
+import src.util as util
 
 
 def build_grid(df,key):

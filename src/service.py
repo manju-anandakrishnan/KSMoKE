@@ -1,6 +1,6 @@
-import dao
-from core import KinaseEnrichmentCore
-from dao import DatabaseAccess as db_access, KinaseSubstrateDAO as ks_dao
+import src.dao as dao
+from src.core import KinaseEnrichmentCore
+from src.dao import DatabaseAccess as db_access, KinaseSubstrateDAO as ks_dao
 
 class ServiceError(Exception):
     pass
