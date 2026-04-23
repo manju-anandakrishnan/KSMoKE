@@ -21,8 +21,9 @@ conda activate netvisKE <br/>
 **Update .env file with db configurations** <br/>
 
 **Launch the application** <br/>
+```
 streamlit run home.py
-
+```
 
 
 
