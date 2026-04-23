@@ -12,7 +12,7 @@ def validate_input_data(df):
     '''
 
     # Validate for required columns - 'protein' column is required and at least one of 'motif' or 'site' column is required.
-    column_names = df.columns.to_list()
+    column_names = [x.lower() for x in df.columns.to_list()]
     if 'protein' not in column_names:
         raise CustomError(msg="Input file error:: Column, 'protein' is missing")
     elif (('motif' not in column_names) and ('site' not in column_names)):

@@ -7,21 +7,52 @@ class KinaseEnrichmentCore:
     '''
     This method loads the background BL-KSMo kinase-substrate library to the cache
     '''
-
     @st.cache_data
     def get_ks_library_ksmo():
         ks_library_df = pd.read_feather('data/ks_libraries/BL-KSMo.feather')
+        ks_library_df = ks_library_df[['kinase','substrate','site']]
+        ks_library_df.drop_duplicates(inplace=True)
         return ks_library_df
     
     '''
     This method loads the background BL-stKSMoyKA kinase-substrate library to the cache
     '''
-
     @st.cache_data
     def get_ks_library_stksmoyka():
         ks_library_df = pd.read_feather('data/ks_libraries/BL-stKSMoyKA.feather')
+        ks_library_df = ks_library_df[['kinase','substrate','site']]
+        ks_library_df.drop_duplicates(inplace=True)
         return ks_library_df
     
+    '''
+    This method loads the background BL-nKIN kinase-substrate library to the cache
+    '''
+    @st.cache_data
+    def get_ks_library_nkin():
+        ks_library_df = pd.read_feather('data/ks_libraries/BL-nKIN.feather')
+        ks_library_df = ks_library_df[['kinase','substrate','site']]
+        ks_library_df.drop_duplicates(inplace=True)
+        return ks_library_df
+    
+    '''
+    This method loads the background BL-KA kinase-substrate library to the cache
+    '''
+    @st.cache_data
+    def get_ks_library_ka():
+        ks_library_df = pd.read_feather('data/ks_libraries/BL-KA.feather')
+        ks_library_df = ks_library_df[['kinase','substrate','site']]
+        ks_library_df.drop_duplicates(inplace=True)
+        return ks_library_df
+    
+    '''
+    This method loads the background BL kinase-substrate library to the cache
+    '''
+    @st.cache_data
+    def get_ks_library_bl():
+        ks_library_df = pd.read_feather('data/ks_libraries/BL.feather')
+        ks_library_df = ks_library_df[['kinase','substrate','site']]
+        ks_library_df.drop_duplicates(inplace=True)
+        return ks_library_df
 
     def get_ks_library(ks_library_key, custom_bg_df = None):
         ks_library_df = None

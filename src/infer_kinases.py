@@ -9,10 +9,10 @@ from st_link_analysis import st_link_analysis
 from st_link_analysis.component.layouts import LAYOUTS
 import src.util as util
 
-st.markdown('''<b>Infer differentially regulated kinases for a condition state using KSMoFinder's predictions</b><br/> 
+st.markdown('''<b>Infer differentially regulated kinases for a condition state using one of the compiled libraries or upload a custom library.</b><br/> 
                 Enriched kinases are determined using Fisher's exact test.<br/>
                 For each kinase, the below contingency table template is used to compute p-value<br/>
-                In the below table, <b>'phosphosites targeted by a kinase'</b> includes KSMoFinder's predicted sites of the kinase and sites reported as catalyzed by the kinase in iPTMnet and PhosphositePlus.   
+                In the below table, <b>'phosphosites targeted by a kinase'</b> includes sites associated to the kinase in the selected/uploaded library.   
                 ''',
                 unsafe_allow_html=True)
 
@@ -33,7 +33,9 @@ with st.container(border=True):
 
     # File upload section    
     st.markdown("""Upload a CSV file with at least two columns - protein and site.<br/>
-                    The column site must be of the format \<residue\>\<position\>. For example: Y1135, T202, Y1000 <br/>
+                    You file must include a header line with labels - protein, site. <br/>
+                    Protein must be a UniProt Accession Number. <br/>
+                    The column, 'site' must be of the format \<residue\>\<position\>. For example: Y1135, T202, Y1000 <br/>
                     Optionally, include logFC and p-value and choose thresholds for the two columns. <br/>
                     All other columns in the phosphoproteome file will be ignored. <br/>""",unsafe_allow_html=True)
 
@@ -71,19 +73,27 @@ with st.container(border=True):
     st.markdown(f"""<b><p style="color:#0000FF;">Choose (or) upload a background kinase-substrate library:</p></b>""",unsafe_allow_html=True)
     st.markdown(f"""Baseline<b>(BL)</b> refers to curated kinase-substrate relationships from iPTMnet and PhosphositePlus""",unsafe_allow_html=True)
     bg_ks_library_key = st.radio("Kinase-substrate library", 
-                            ["**BL-KSMo**", 
+                            ["**Baseline (BL)**", 
+                            "**BL-KSMo**", 
+                            "**BL-KA**", 
                             "**BL-KSMoKA**",
+                            "**BL-nKIN**",
                             "**Custom library**"], 
                             captions=[
-                                "BL + \n\n KSMoFinder's predictions \n\n &nbsp;",
+                                "Curated \n\n kinase-substrate \n\n library",
+                                "BL + \n\n KSMoFinder's \n\n predictions",
+                                "BL + \n\n Kinome Atlas \n\n &nbsp;",
                                 "BL + \n\n KSMoFinder's predictions (ST) + \n\n Kinome Atlas (Y)",
+                                "BL + \n\n NetworKIN predictions \n\n &nbsp;",
                                 "Upload a custom \n\n kinase-substrate library \n\n &nbsp;"], index=1, horizontal=True, label_visibility='collapsed')
 
     custom_bg_df = None
     if bg_ks_library_key == "**Custom library**":
         st.markdown("""<b>Custom library format specifications:</b><br/>
                     Upload a background file (CSV format with the mandatory columns: kinase, substrate, site). <br/>
-                    The column site must be of the format \<residue\>\<position\>. For example: Y1135, T202, Y1000 <br/>
+                    You file must include a header line with labels - kinase, substrate, site. <br/>
+                    The values for kinase and substrate must be UniProt Accession Numbers of the proteins.<br/>
+                    The column, 'site' must be of the format \<residue\>\<position\>. For example: Y1135, T202, Y1000 <br/>
                     All other columns in the background file will be ignored.<br/>""",unsafe_allow_html=True)
                                         
         background_uploaded_file = st.file_uploader("background_file",type=["csv"],label_visibility='collapsed',key='background_file')
@@ -117,21 +127,25 @@ if 'input_psite_df' in st.session_state:
             if st.button('Infer kinases',type='primary'):
                 if 'site' in df_columns:
                     df['site'] = df['site'].apply(lambda x:x.upper())
-                input_exp_sites, result_df, exp_sites, in_exp_df = controller.get_enriched_kinases(df,bg_ks_library_key,bg_df=custom_bg_df,logFC=logFC_thresh,pval=pval_thresh)
-                # Session maintenance
-                st.session_state.show_results_ki = True
-                st.session_state.inference_results = result_df
-                st.session_state.input_exp_sites = input_exp_sites
-                st.session_state.exp_sites = exp_sites
-                st.session_state.results_file_id = st.session_state.input_file_id
-                st.session_state.in_exp_df = in_exp_df
+                try:
+                    input_exp_sites, result_df, exp_sites, in_exp_df = controller.get_enriched_kinases(df,bg_ks_library_key,bg_df=custom_bg_df,logFC=logFC_thresh,pval=pval_thresh)
+                    # Session maintenance
+                    st.session_state.show_results_ki = True
+                    st.session_state.inference_results = result_df
+                    st.session_state.input_exp_sites = input_exp_sites
+                    st.session_state.exp_sites = exp_sites
+                    st.session_state.results_file_id = st.session_state.input_file_id
+                    st.session_state.in_exp_df = in_exp_df
 
-                # On click of Infer kinases button
-                st.session_state.result_grid_selected_indices = []
-                st.session_state.visualize_subnetwork = False
+                    # On click of Infer kinases button
+                    st.session_state.result_grid_selected_indices = []
+                    st.session_state.visualize_subnetwork = False
 
-                # Unique key for inference results grid. Regenerated on each inference
-                st.session_state.grid_key_ki = f'grid_ki_{datetime.now().strftime("%Y%m%d%H%M%S")}'
+                    # Unique key for inference results grid. Regenerated on each inference
+                    st.session_state.grid_key_ki = f'grid_ki_{datetime.now().strftime("%Y%m%d%H%M%S")}'
+                except Exception as e:
+                    # In case of exception
+                    st.error('An exception occurred when conducting enrichment analysis for your data. \n\n Make sure all records in your phosphoproteomics data aligns with the given instructions. \n\n If you are using a custom library, verify if all records in the library follows the given instructions. \n\n If the issue persits after you have validated, please contact manjua@udel.edu')
         
         # If results are to be shown and the input file has not changed, display the results
         if (st.session_state.show_results_ki) & \
@@ -275,7 +289,8 @@ if 'input_psite_df' in st.session_state:
                                 except Exception as e:
                                     st.error(f"Cannot retrive connections between these proteins:{e}")
             else:
-                st.markdown(f"""<p style="color:#FF4D00;">There are no enriched kinase based on the selected kinase-substrate library. Choose an alternate background and/or validate your phosphoproteome file, and thresholds if applicable.</p>""",unsafe_allow_html=True)
+                st.markdown(f"""<p style="color:#FF4D00;">There are no enriched kinase based on the selected kinase-substrate library. <br/>
+                            Choose an alternate background and/or validate your phosphoproteome file, and thresholds if applicable.</p>""",unsafe_allow_html=True)
     except CustomError as e:
         st.error(e)
         st.session_state.show_results_ki = False

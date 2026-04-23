@@ -154,18 +154,21 @@ class Controller:
                 exp_df_shape: This is the number of rows in the filtered experimental dataframe used for enrichment analysis
                 in_exp_df: This is the filtered experimental dataframe used for enrichment analysis
         '''
-        input_exp_df_shape = df.shape[0]
-        enrichment_results, exp_df_shape, in_exp_df = self.ki_service.get_enriched_kinases(df,bg_ks_library_key,bg_df,logFC,pval)
-        result_df = pd.DataFrame.from_dict(enrichment_results, orient='index')
-        result_df = result_df.reset_index()
-        result_df = result_df.rename(columns={'index': 'Kinase UniProt ID'})
-        result_df['Kinase Gene'] =  result_df['Kinase UniProt ID'].apply(lambda x:get_protein_gene_dict().get(x))
-        result_df.sort_values(by=['adj_p-value'],inplace=True)
-        result_df = result_df[['Kinase Gene','Kinase UniProt ID','predicted_sites','p-value','adj_p-value']]
-        result_df = result_df[result_df['adj_p-value'] < 0.05].copy().reset_index(drop=True)
-        result_df['p-value'] = result_df['p-value'].apply(lambda x: '{:.2e}'.format(x))
-        result_df['adj_p-value'] = result_df['adj_p-value'].apply(lambda x: '{:.2e}'.format(x))
-        result_df['predicted_sites'] = result_df['predicted_sites'].astype('str')
-        result_df.rename(columns={'predicted_sites':'Count of sites targeted by the kinase'}, inplace=True)
-        return input_exp_df_shape, result_df, exp_df_shape, in_exp_df
+        try:
+            input_exp_df_shape = df.shape[0]
+            enrichment_results, exp_df_shape, in_exp_df = self.ki_service.get_enriched_kinases(df,bg_ks_library_key,bg_df,logFC,pval)
+            result_df = pd.DataFrame.from_dict(enrichment_results, orient='index')
+            result_df = result_df.reset_index()
+            result_df = result_df.rename(columns={'index': 'Kinase UniProt ID'})
+            result_df['Kinase Gene'] =  result_df['Kinase UniProt ID'].apply(lambda x:get_protein_gene_dict().get(x))
+            result_df.sort_values(by=['adj_p-value'],inplace=True)
+            result_df = result_df[['Kinase Gene','Kinase UniProt ID','predicted_sites','p-value','adj_p-value']]
+            result_df = result_df[result_df['adj_p-value'] < 0.05].copy().reset_index(drop=True)
+            result_df['p-value'] = result_df['p-value'].apply(lambda x: '{:.2e}'.format(x))
+            result_df['adj_p-value'] = result_df['adj_p-value'].apply(lambda x: '{:.2e}'.format(x))
+            result_df['predicted_sites'] = result_df['predicted_sites'].astype('str')
+            result_df.rename(columns={'predicted_sites':'Count of sites targeted by the kinase'}, inplace=True)
+            return input_exp_df_shape, result_df, exp_df_shape, in_exp_df
+        except Exception as e:
+            raise e
     
