@@ -1,0 +1,27 @@
+This repository includes data from different sources. 
+Upon accessing the data in the repository, you are accepting to the below terms and conditions which govern your ability to access and use it.
+
+The code in this repository is licensed under CC BY 4.0. You are free to share (copy and redistribute the material in any medium or format) and adapt (remix, transform, and build upon the material) for any purpose, even commercially. You must give appropriate credit (by using the original ontology IRI for the whole ontology or original term IRIs for individual terms), provide a link to the license, and indicate if any changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+
+The use of kinase-substrate libraries (.feather files in data/ks_libraries folder) are governed by the below conditions,
+
+1. All libraries prefixed with 'BL' in their name include data from iPTMnet and PhosphositePlus.
+
+iPTMnet database is protected under the CC BY-NC-SA 4.0 (Attribution-NonCommercial-ShareAlike 4.0 International) license .
+This means that you are free to copy and redistribute the material in any medium or format as long as you comply with the following terms:
+You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+You may not use the material for commercial purposes.
+If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
+
+Data from PhosphositePlus is marked with a source column of 'psp'. PhosphositePlus license applies to this data.
+PSP is licensed by Cell Signaling Technology (CST) for non-commercial use under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License. Warning: PSP data is not for commerical use. Refer to PSP's license information on https://www.phosphosite.org/staticDownloads for additional information. 
+
+2. Libraries - BL-KA, BL-stKSMoyKA include data from Kinome Atlas.
+If you use this library, you must reference their work as instructed in the below source articles.
+Johnson, J. L., Yaron, T. M., Huntsman, E. M., Kerelsky, A., Song, J., Regev, A., Lin, T. Y., Liberatore, K., Cizin, D. M., Cohen, B. M., Vasan, N., Ma, Y., Krismer, K., Robles, J. T., van de Kooij, B., van Vlimmeren, A. E., Andrée-Busch, N., Käufer, N. F., Dorovkov, M. V., Ryazanov, A. G., … Cantley, L. C. (2023). An atlas of substrate specificities for the human serine/threonine kinome. Nature, 613(7945), 759–766. https://doi.org/10.1038/s41586-022-05575-3
+
+Yaron-Barir, T. M., Joughin, B. A., Huntsman, E. M., Kerelsky, A., Cizin, D. M., Cohen, B. M., Regev, A., Song, J., Vasan, N., Lin, T. Y., Orozco, J. M., Schoenherr, C., Sagum, C., Bedford, M. T., Wynn, R. M., Tso, S. C., Chuang, D. T., Li, L., Li, S. S., Creixell, P., … Johnson, J. L. (2024). The intrinsic substrate specificity of the human tyrosine kinome. Nature, 629(8014), 1174–1181. https://doi.org/10.1038/s41586-024-07407-y
+
+3. Library, BL-nKIN includes data from NetworKIN, which was downloaded from KinPred (doi: 10.1371/journal.pcbi.1008681).
+If you use this library, you must reference their work as instructed in the below source article.
+Xue, B., Jordan, B., Rizvi, S., & Naegle, K. M. (2021). KinPred: A unified and sustainable approach for harnessing proteome-level human kinase-substrate predictions. PLoS computational biology, 17(2), e1008681. https://doi.org/10.1371/journal.pcbi.1008681

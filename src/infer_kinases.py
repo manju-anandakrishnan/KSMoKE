@@ -92,7 +92,7 @@ with st.container(border=True):
         st.markdown("""<b>Custom library format specifications:</b><br/>
                     Upload a background file (CSV format with the mandatory columns: kinase, substrate, site). <br/>
                     You file must include a header line with labels - kinase, substrate, site. <br/>
-                    The values for kinase and substrate must be UniProt Accession Numbers of the human proteins. The UniProt Accession Numbers must be reviewed entries in UniProt<br/>
+                    The values for kinase and substrate must be UniProt Accession Numbers of the human proteins. The UniProt Accession Numbers must be reviewed entries in UniProt.<br/>
                     The column, 'site' must be of the format \<residue\>\<position\>. For example: Y1135, T202, Y1000 <br/>
                     All other columns in the background file will be ignored.<br/>""",unsafe_allow_html=True)
                                         
