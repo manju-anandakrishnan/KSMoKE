@@ -1,6 +1,6 @@
 # This repository maintains the code base for the web interface described in the manuscript, 'Improving kinase enrichment analysis with predicted associations and an interactive kinase centric network explorer'.
 
-The application can be accessed at https://research.bioinformatics.udel.edu/KSMoFinder/ <br>
+The application can be accessed at https://research.bioinformatics.udel.edu/KSMoFinder/infer_kinases <br>
 
 **1. Conduct kinase enrichment analysis and explore connections between enriched kinase(s) and substrate proteins** <br/><br/>
 <img src=images/readme_figure2.png width="800">
