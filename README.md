@@ -1,4 +1,4 @@
-# This repository maintains the code base for the web interface described in the manuscript, 'Improving kinase enrichment analysis with predicted associations and an interactive kinase centric network explorer'.
+**This repository maintains the code base for the web interface described in the manuscript, 'Improving kinase enrichment analysis with predicted associations and an interactive kinase centric network explorer'.**
 
 The application can be accessed at https://research.bioinformatics.udel.edu/KSMoFinder/infer_kinases <br>
 
