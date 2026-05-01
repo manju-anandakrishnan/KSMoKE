@@ -1,6 +1,13 @@
 import streamlit as st
 
 st.markdown(
+    "<h2>KSMoFinder - <span style='color:orange;'>K</span>inase \
+        <span style='color:orange;'>S</span>ubstrate \
+            <span style='color:orange;'>Mo</span>tif Finder</h2>",
+    unsafe_allow_html=True
+)
+
+st.markdown(
     "<h3><u>About KSMoFinder</h3></u>",
     unsafe_allow_html=True
 )

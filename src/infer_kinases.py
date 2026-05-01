@@ -9,8 +9,12 @@ from st_link_analysis import st_link_analysis
 from st_link_analysis.component.layouts import LAYOUTS
 import src.util as util
 
-st.markdown('''<b>Infer differentially regulated kinases for a condition state using one of the compiled libraries or upload a custom library.</b><br/> 
-                Enriched kinases are determined using Fisher's exact test.<br/>
+st.markdown(
+    "<h4><b>Infer differentially regulated kinases for a condition state using one of the compiled libraries or upload a custom library.</b></h4>",
+    unsafe_allow_html=True
+)
+
+st.markdown('''Enriched kinases are determined using Fisher's exact test.<br/>
                 For each kinase, the below contingency table template is used to compute p-value<br/>
                 In the below table, <b>'phosphosites targeted by a kinase'</b> includes sites associated to the kinase in the selected/uploaded library.   
                 ''',

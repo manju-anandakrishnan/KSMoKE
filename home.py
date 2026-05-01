@@ -9,14 +9,6 @@ st.set_page_config(
     layout="wide"
 )
 
-st.markdown(
-    "<h2>KSMoFinder - <span style='color:orange;'>K</span>inase \
-        <span style='color:orange;'>S</span>ubstrate \
-            <span style='color:orange;'>Mo</span>tif Finder</h2>",
-    unsafe_allow_html=True
-)
-
-
 about_page = st.Page('src/about.py',title='About KSMoFinder')
 predict_kinases_page = st.Page('src/predict_kinases.py',title='Predict Kinases')
 kinase_inference_page = st.Page('src/infer_kinases.py',title='Infer Kinases')

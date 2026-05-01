@@ -10,6 +10,13 @@ from st_link_analysis.component.layouts import LAYOUTS
 # Load environment variables
 load_dotenv()
 
+st.markdown(
+    "<h2>KSMoFinder - <span style='color:orange;'>K</span>inase \
+        <span style='color:orange;'>S</span>ubstrate \
+            <span style='color:orange;'>Mo</span>tif Finder</h2>",
+    unsafe_allow_html=True
+)
+
 st.markdown("<b>Predict kinases for a phosphosite and view biological connections between the kinase and the substrate protein</b>",unsafe_allow_html=True)
 
 cut_off_col1, cut_off_col2, cut_off_col3 = st.columns([0.5,0.3,1])
